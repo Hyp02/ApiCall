@@ -1,0 +1,12 @@
+# 应用服务 WEB 访问端口
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: "api-interface"
+api:
+  client:
+    access-key: "hyp"
+    secret-key: "hyp"
