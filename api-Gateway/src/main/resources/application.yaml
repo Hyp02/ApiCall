@@ -1,0 +1,24 @@
+server:
+  port: 8090 # 网关地址
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: apiInterface # id 自定义 唯一
+        uri: http://localhost:8082 # 路由的目标服务
+        predicates:
+          - Path=/api/** # 如果用户请求路径为 /api 开头 路由到目标服务
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ApiCall
+    username: root
+    password: hyp
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
